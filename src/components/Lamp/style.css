@@ -1,0 +1,28 @@
+.lamp-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .lamp {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 20px auto;
+  }
+  
+  .lamp-on {
+    background-color: yellow;
+    border: 3px solid orange;
+  }
+  
+  .lamp-off {
+    background-color: grey;
+    border: 3px solid black;
+  }
+  
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
