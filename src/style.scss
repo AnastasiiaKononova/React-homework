@@ -1,0 +1,21 @@
+.app {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .left-panel {
+    flex: 1;
+    background-color: lightcyan;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20rem;
+  }
+  
+  .right-panel {
+    flex: 1;
+    background-color: #c7eef8;
+    padding: 20px;
+  }
+  

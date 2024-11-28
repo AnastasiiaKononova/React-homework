@@ -1,13 +1,26 @@
-import React from 'react';
-import Lamp from './components/Lamp';
-import Dialogue from './components/Dialogue';
-import Parent from './components/Parent';
+import React from "react";
+import { CalendarContext, CalendarProvider } from "./contexts/CalendarContext";
+import Calendar from "./components/ Calendar/Calendar";
+import CurrentDay from "./components/CurrentDay/CurrentDay";
+import MonthSelector from "./components/MonthSelector/MonthSelector";
+import "./style.scss";
 
-function App(props) {
+class App extends React.Component {
+  render() {
     return (
-    <section>
-      <Parent/>
-    </section>)
+      <CalendarProvider>
+        <div className="app">
+          <div className="left-panel">
+            <CurrentDay />
+          </div>
+          <div className="right-panel">
+            <MonthSelector />
+            <Calendar />
+          </div>
+        </div>
+      </CalendarProvider>
+    );
+  }
 }
 
 export default App;
