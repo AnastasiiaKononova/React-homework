@@ -1,34 +1,4 @@
-// import React, { useState, useEffect } from 'react';
-// import CalendarContext from './CalendarContext';
-
-// const CalendarProvider = ({ children }) => {
-//   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-//   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
-//   const [selectedDate, setSelectedDate] = useState(new Date());
-
-//   useEffect(() => {
-//     setCurrentYear(new Date().getFullYear());
-//   }, [currentMonth]);
-
-//   return (
-//     <CalendarContext.Provider
-//       value={{
-//         currentMonth,
-//         currentYear,
-//         selectedDate,
-//         setCurrentMonth,
-//         setSelectedDate,
-//       }}
-//     >
-//       {children}
-//     </CalendarContext.Provider>
-//   );
-// };
-
-// export default CalendarProvider;
-
-import React, { useState } from "react";
-import CalendarContext from "./CalendarContext";
+import React, { useState, useEffect } from "react";
 import {
   startOfMonth,
   endOfMonth,
@@ -36,39 +6,34 @@ import {
   endOfWeek,
   eachDayOfInterval,
 } from "date-fns";
-import { enUS } from "date-fns/locale";
+import CalendarContext from "./CalendarContext";
 
-const CalendarProvider = ({ children }) => {
+const getWeeksInMonth = (month) => {
+  const start = startOfWeek(startOfMonth(month));
+  const end = endOfWeek(endOfMonth(month));
+  const days = eachDayOfInterval({ start, end });
+
+  return Array.from({ length: days.length / 7 }, (_, i) =>
+    days.slice(i * 7, i * 7 + 7)
+  );
+};
+
+ const CalendarProvider = ({ children }) => {
   const today = new Date();
-  const [selectedDay, setSelectedDay] = useState(today);
+  const [currentMonth, setCurrentMonth] = useState(today);
+  const [selectedDate, setSelectedDate] = useState(today);
+  const [weeksInMonth, setWeeksInMonth] = useState([]);
 
-  const handleSelectDay = (day) => {
-    setSelectedDay(day);
-  };
-
-  const currentMonthStart = startOfMonth(today);
-  const currentMonthEnd = endOfMonth(today);
-
-  const weeksInMonth = [];
-
-  let startOfFirstWeek = startOfWeek(currentMonthStart, { locale: enUS });
-  let endOfLastWeek = endOfWeek(currentMonthEnd, { locale: enUS });
-
-  const daysInMonth = eachDayOfInterval({
-    start: startOfFirstWeek,
-    end: endOfLastWeek,
-  });
-
-  for (let i = 0; i < daysInMonth.length; i += 7) {
-    weeksInMonth.push(daysInMonth.slice(i, i + 7));
-  }
+  useEffect(() => {
+    setWeeksInMonth(getWeeksInMonth(currentMonth));
+  }, [currentMonth]);
 
   return (
     <CalendarContext.Provider
       value={{
-        selectedDay,
-        handleSelectDay,
-        today,
+        currentMonth,
+        selectedDate,
+        setSelectedDate,
         weeksInMonth,
       }}
     >

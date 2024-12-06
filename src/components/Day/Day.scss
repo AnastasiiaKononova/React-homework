@@ -1,0 +1,35 @@
+.day {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ddd;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  &.current-month {
+    background-color: #fff;
+  }
+
+  &.not-current-month {
+    background-color: #f2f2f0;
+  }
+
+  &.selected {
+    border: 2px solid #f02c1e;
+    background-color: #dcf7fe;
+  }
+
+  &.today {
+    background-color: #c5e1f4;
+  }
+
+  &:hover {
+    background-color: #92b9df;
+  }
+
+  &:active {
+    background-color: #bfd0e6;
+  }
+}
+
