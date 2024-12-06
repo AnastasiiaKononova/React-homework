@@ -1,9 +1,9 @@
 import React from "react";
-import Day from '../Day/Day';
+import Day from "../Day/Day";
 import styles from "./Week.scss";
 
 const Week = ({ days, currentMonth, selectedDate, onSelectDate }) => {
-  const renderDays = () => {
+  const RenderDays = () => {
     return days.map((day) => (
       <Day
         key={day}
@@ -15,8 +15,11 @@ const Week = ({ days, currentMonth, selectedDate, onSelectDate }) => {
     ));
   };
 
-  return <tr>{renderDays()}</tr>;
+  return (
+    <tr>
+      <RenderDays />
+    </tr>
+  );
 };
 
 export default Week;
-

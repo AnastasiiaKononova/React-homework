@@ -1,7 +1,7 @@
 import React from "react";
 import { format, isSameDay, isToday, isSameMonth } from "date-fns";
 import classNames from "classnames";
-import styles from './Day.scss';
+import styles from "./Day.scss";
 
 const Day = ({ day, currentMonth, selectedDate, onSelectDate }) => {
   const handleClick = () => onSelectDate(day);
@@ -15,14 +15,10 @@ const Day = ({ day, currentMonth, selectedDate, onSelectDate }) => {
 
   const dayTitle = `Select ${format(day, "EEEE, MMMM d")}`;
 
+  const formatedDay = format(day, "d");
   return (
-    <td
-      key={day}
-      className={dayClasses}
-      onClick={handleClick}
-      title={dayTitle}
-    >
-      {format(day, "d")}
+    <td key={day} className={dayClasses} onClick={handleClick} title={dayTitle}>
+      {formatedDay}
     </td>
   );
 };

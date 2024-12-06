@@ -1,7 +1,7 @@
 import React from "react";
 import CalendarProvider from "./contexts/CalendarProvider";
 import CurrentDay from "./components/CurrentDay/CurrentDay";
-import Month from "./components/Month";
+import Month from "./components/Month/Month";
 import "./style.css";
 
 const App = () => (

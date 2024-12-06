@@ -5,7 +5,7 @@ import styles from "./Weekdays.scss";
 const generateWeekdays = () =>
   Array.from({ length: 7 }, (_, i) => format(new Date(2024, 0, i), "EEEEEE"));
 
-const renderWeekdays = (weekdays) =>
+const RenderWeekdays = ({ weekdays }) =>
   weekdays.map((day) => (
     <th key={day} className="weekday">
       {day}
@@ -17,7 +17,9 @@ const Weekdays = () => {
 
   return (
     <thead>
-      <tr>{renderWeekdays(weekdays)}</tr>
+      <tr>
+        <RenderWeekdays weekdays={weekdays} />
+      </tr>
     </thead>
   );
 };
